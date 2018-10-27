@@ -1,0 +1,26 @@
+{
+  "name": "authentication-application-with-nodejs",
+  "version": "1.0.0",
+  "description": "An Contacts Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GhGeani/Authentication-Application-with-NodeJS.git"
+  },
+  "author": "Gherghe Geani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GhGeani/Authentication-Application-with-NodeJS/issues"
+  },
+  "homepage": "https://github.com/GhGeani/Authentication-Application-with-NodeJS#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-myconnection": "^1.0.4",
+    "express-validator": "^5.3.0",
+    "mysql": "^2.16.0"
+  }
+}
