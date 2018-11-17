@@ -1,0 +1,35 @@
+<% include ../layouts/_header.ejs  %>
+<% if (messages.error) { %>
+  <div class="alert alert-danger"><%= messages.error %></div>
+ <% } %>
+<div class= "ml-2">
+    <form method="post">
+              <div class="form-group">
+                <label for="email">Email address: </label>
+                <input type="text" name= "email" class="form-control" id="email" placeholder="Enter email" aria-describedby="emailHelp" value= "<%= email %>">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <label for="username">Username: </label>
+                <input type="text" name= "username" class="form-control" id="username" placeholder="Username" value= "<%= username %>">
+              </div>
+              <div class="form-group">
+                  <label for="password">Password: </label>
+                  <input type="password" name= "password" class="form-control" id="password" placeholder="Password" value= "<%= password %>">
+              </div>
+              <div class="form-group">
+                  <label for="repeat_password">Repeat password: </label>
+                  <input type="password" name= "repeat_password" class="form-control" id="repeat_password" placeholder="Repeat Password" value= "<%= repeat_password %>">
+              </div>
+              
+              <!-- <div class="form-group">
+                <label for="image">Image input</label>
+                <input type="file" class="form-control-file" name="image" id="image" aria-describedby="fileHelp">
+                <small id="fileHelp" class="form-text text-muted">Please select an image wich will represent you.</small>
+              </div> -->
+              
+              <button type="submit" class="btn btn-secondary mt-2 mb-4">Register</button>
+        </form>
+  </div>
+
+<% include ../layouts/_footer.ejs  %>
