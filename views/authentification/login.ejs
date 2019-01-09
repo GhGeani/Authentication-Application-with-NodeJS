@@ -1,23 +1,41 @@
 <% include ../layouts/_header.ejs  %>
-<% if (messages.error) { %>
-      <div class="alert alert-danger"><%= messages.error %></div>
-     <% } %>
 <% if (messages.success) { %>
- <div class="alert alert-success alert-dismissible fade show" role="alert"><%= messages.success %>
-   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-     <span aria-hidden="true">&times;</span>
-   </button>
-  </div>
+      <div class="alert alert-success"><%= messages.success %></div>
+     <% } %>
+<% if (messages.error) { %>
+ <div class="alert alert-danger"><%= messages.error %></div>
 <% } %>
 <div class= "ml-2">
     <form method="post">
           <div class="form-group">
                 <label for="Username">Username: </label>
                 <input type="text" name= "username" class="form-control" id="username" placeholder="Username" value="<%= username %>">
-          </div>
+                <% if (typeof errors != 'undefined'){ %>
+                <% for (var i = 0; i < errors.length; i++){ %>
+                  <% if (errors[i].param == 'username'){ %>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert"><%= errors[i].msg %>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                              </button>
+                        </div>
+                  <% } %>
+                  <% } %>
+                  <% } %>
+            </div>
           <div class="form-group">
                 <label for="Password">Password: </label>
                 <input type="password" name= "password" class="form-control" id="password" placeholder="Password" value="<%= password %>" >
+                <% if (typeof errors != 'undefined'){ %>
+                <% for (var i = 0; i < errors.length; i++){ %>
+                  <% if (errors[i].param == 'password'){ %>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert"><%= errors[i].msg %>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                              </button>
+                        </div>
+                  <% } %>
+                  <% } %>
+                  <% } %>
           </div>
           <button type="submit" class="btn btn-secondary mt-0 mb-0">Login</button>
     </form>

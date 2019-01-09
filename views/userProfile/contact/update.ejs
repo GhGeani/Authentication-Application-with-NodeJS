@@ -7,14 +7,47 @@
           <div class="form-group">
             <label for="first_name">First name: </label>
             <input type="text" name= "first_name" class="form-control" id="first_name" placeholder="First name" value="<%= first_name %>">
+            <% if (typeof errors != 'undefined'){ %>
+              <% for (var i = 0; i < errors.length; i++){ %>
+                <% if (errors[i].param == 'first_name'){ %>
+                      <div class="alert alert-warning alert-dismissible fade show" role="alert"><%= errors[i].msg %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                            </button>
+                      </div>
+                <% } %>
+                <% } %>
+                <% } %>
           </div>
           <div class="form-group">
             <label for="second_name">Second name: </label>
             <input type="text" name= "second_name" class="form-control" id="second_name" placeholder="Second name" value="<%= second_name %>">
+            <% if (typeof errors != 'undefined'){ %>
+              <% for (var i = 0; i < errors.length; i++){ %>
+                <% if (errors[i].param == 'second_name'){ %>
+                      <div class="alert alert-warning alert-dismissible fade show" role="alert"><%= errors[i].msg %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                            </button>
+                      </div>
+                <% } %>
+                <% } %>
+                <% } %>
           </div>
           <div class="form-group">
               <label for="phone_number">Phone number: </label>
               <input type="text" name= "phone_number" class="form-control" id="phone_number" placeholder="Phone number" value="<%= phone_number %>">
+              <% if (typeof errors != 'undefined'){ %>
+                <% for (var i = 0; i < errors.length; i++){ %>
+                  <% if (errors[i].param == 'phone_number'){ %>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert"><%= errors[i].msg %>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                              </button>
+                        </div>
+                  <% } %>
+                  <% } %>
+                  <% } %>
           </div>
           
           <!-- <div class="form-group">

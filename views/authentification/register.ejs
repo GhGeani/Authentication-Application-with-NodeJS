@@ -8,19 +8,63 @@
                 <label for="email">Email address: </label>
                 <input type="text" name= "email" class="form-control" id="email" placeholder="Enter email" aria-describedby="emailHelp" value= "<%= email %>">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <% if (typeof errors != 'undefined'){ %>
+                  <% for (var i = 0; i < errors.length; i++){ %>
+                    <% if (errors[i].param == 'email'){ %>
+                          <div class="alert alert-warning alert-dismissible fade show" role="alert"><%= errors[i].msg %>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                </button>
+                          </div>
+                    <% } %>
+                    <% } %>
+                    <% } %>
               </div>
               <div class="form-group">
                 <label for="username">Username: </label>
                 <input type="text" name= "username" class="form-control" id="username" placeholder="Username" value= "<%= username %>">
+                <% if (typeof errors != 'undefined'){ %>
+                  <% for (var i = 0; i < errors.length; i++){ %>
+                    <% if (errors[i].param == 'username'){ %>
+                          <div class="alert alert-warning alert-dismissible fade show" role="alert"><%= errors[i].msg %>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                </button>
+                          </div>
+                    <% } %>
+                    <% } %>
+                    <% } %>
               </div>
               <div class="form-group">
                   <label for="password">Password: </label>
                   <input type="password" name= "password" class="form-control" id="password" placeholder="Password" value= "<%= password %>">
-              </div>
+                  <% if (typeof errors != 'undefined'){ %>
+                    <% for (var i = 0; i < errors.length; i++){ %>
+                      <% if (errors[i].param == 'password'){ %>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert"><%= errors[i].msg %>
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                  </button>
+                            </div>
+                      <% } %>
+                      <% } %>
+                      <% } %>
+                </div>
               <div class="form-group">
                   <label for="repeat_password">Repeat password: </label>
                   <input type="password" name= "repeat_password" class="form-control" id="repeat_password" placeholder="Repeat Password" value= "<%= repeat_password %>">
-              </div>
+                  <% if (typeof errors != 'undefined'){ %>
+                    <% for (var i = 0; i < errors.length; i++){ %>
+                      <% if (errors[i].param == 'repeat_password'){ %>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert"><%= errors[i].msg %>
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                  </button>
+                            </div>
+                      <% } %>
+                      <% } %>
+                      <% } %>
+                </div>
               
               <!-- <div class="form-group">
                 <label for="image">Image input</label>

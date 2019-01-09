@@ -24,13 +24,14 @@ var errors = req.validationErrors();
      }
     if(errors) {
         console.log(errors);
-        req.flash('error', 'Input ERROR. Check console.');
+        //req.flash('error', 'Input ERROR. Check console.');
         res.render('authentification/register', {
             title:      'Register Page',
             email:      user.email,
             username:   user.username,
             password:   '',
-            repeat_password: ''
+            repeat_password: '',
+            errors: errors
         });
     } else {
        
@@ -41,7 +42,7 @@ var errors = req.validationErrors();
             if(err){
                 // Flash error - connection
             } else {
-                conn.query('SELECT * FROM user WHERE user.email= ? AND user.username= ?',[user.email, user.username], (err, results) => {
+                conn.query('SELECT * FROM user WHERE user.email= ? OR user.username= ?',[user.email, user.username], (err, results) => {
                     if(results != 0){
                         //console.log(results);
                         // Flash error - account already exist
@@ -61,7 +62,7 @@ var errors = req.validationErrors();
                         }
                         conn.query('INSERT INTO user SET ?', preparedUser, (err, result) => {
                             if(err){
-                                // Flash error - insert error
+                                console.log(err);
                             }
                              // Flash success alert - accoust successifully created
                              req.flash('success', 'Account successfully registred.')   
@@ -77,18 +78,19 @@ var errors = req.validationErrors();
 }
 
 module.exports.loginUser = (req,res) => {
-    req.checkBody("username").notEmpty().withMessage("Username is empty");
+    req.checkBody("username").notEmpty().withMessage("Username field is empty");
     req.checkBody("password").notEmpty().withMessage("Password field is empty");
 
     var errors = req.validationErrors();
     if(errors){
-        req.flash('error', 'Input ERRORS. Check console');
+        req.flash('error', 'Input ERRORS. Check console!');
         console.log(errors);
         // Flash validation fields errors
         res.render('authentification/login', {
             title:      'Login Page', 
             username:   req.body.username,
             password:   '',
+            errors:     errors
         });
     } else {
         req.getConnection((err, conn) =>{
