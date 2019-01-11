@@ -148,3 +148,48 @@ module.exports.update = (req,res) => {
         });
      }
 }
+
+module.exports.search = (req,res) => {
+
+    let first_name = req.body.first_name;
+    let second_name = req.body.second_name;
+    let query = '';
+    
+   req.getConnection((err, conn) =>{
+        if(first_name == ''){
+            query = 'SELECT * FROM contact JOIN user_contact ON contact.id = user_contact.id_contact WHERE user_contact.id_user = ?  AND second_name = ? ORDER BY contact.first_name ASC;'
+            conn.query(query, [req.session.user_id, second_name], (err,results) =>{
+                res.render('userProfile/homepage-profile',{
+                    title: `${req.session.username}'s Profile`,
+                    data:  results
+                })
+            })
+        } else {
+            if(second_name == ''){
+                query = 'SELECT * FROM contact JOIN user_contact ON contact.id = user_contact.id_contact WHERE user_contact.id_user = ? AND first_name = ? ORDER BY contact.second_name ASC;'
+                conn.query(query, [req.session.user_id, first_name], (err,results) =>{
+                    res.render('userProfile/homepage-profile',{
+                        title: `${req.session.username}'s Profile`,
+                        data:  results
+                    })
+                })
+            } else {
+                if(second_name != '' && first_name != ''){
+                    query = 'SELECT * FROM contact JOIN user_contact ON contact.id = user_contact.id_contact WHERE user_contact.id_user = ? AND first_name = ? AND second_name = ? ORDER BY first_name ASC;'
+                    conn.query(query, [req.session.user_id, first_name, second_name], (err,results) =>{
+                    res.render('userProfile/homepage-profile',{
+                        title: `${req.session.username}'s Profile`,
+                        data:  results
+                    })
+                })
+                } else {
+                    res.redirect('/homepage');
+                }
+                
+            }
+        } 
+        
+        
+   });
+    
+}

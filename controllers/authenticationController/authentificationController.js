@@ -83,7 +83,7 @@ module.exports.loginUser = (req,res) => {
 
     var errors = req.validationErrors();
     if(errors){
-        req.flash('error', 'Input ERRORS. Check console!');
+        //req.flash('error', 'Input ERRORS. Check console!');
         console.log(errors);
         // Flash validation fields errors
         res.render('authentification/login', {
@@ -120,7 +120,7 @@ module.exports.loginUser = (req,res) => {
                         } else {
                             req.session.username = result[0].username;
                             req.session.user_id  = result[0].id;
-                            res.redirect('/my-profile/home')
+                            res.redirect('/my-profile/home/1')
                         }
                     }
                 });

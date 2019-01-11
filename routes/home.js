@@ -3,7 +3,7 @@ const router    = require('express').Router();
 router.route('/homepage')
     .get((req,res) => {
         if(req.session.username){
-            res.redirect('my-profile/home')
+            res.redirect('my-profile/home/1')
         }else {
             res.render('homepage', {
                 title: 'Homepage'

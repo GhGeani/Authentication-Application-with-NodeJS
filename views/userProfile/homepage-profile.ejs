@@ -1,58 +1,86 @@
 <% include ../layouts/_header.ejs  %>
 
-<a href="create-contact"><button class= 'btn btn-secondary addBtn' name="addBtn">Add a new contact</button></a> 
+<div class = "container" id= "main-container">
+  <div class = "row">
+    <div class="col-md-3 border border-info" id= "user-panel">
+      <% if (typeof noContacts != 'undefined'){ %>  
+      <p class="lead text-center">
+          <small class= "text-muted">No. of contacts: <%= noContacts %></small> 
+      </p>
+      <% } %>
+        <a href="/authentification/logout"><button class= 'btn btn-secondary btn-sm btn-block logoutBtn' name="logoutBtn">Logout</button></a> 
+        <div class="container filters">
+          <form method="POST">
+            <input class="form-control form-control-sm"  type="text" name= "first_name" placeholder="Search after first name">
+            <input class="form-control form-control-sm"  type="text" name= "second_name" placeholder="Search after second name">
+            <p class="border border-bottom border-secondary"></p>
 
-<% if (data.length == 0){ %>
-  <p class = "lead text-center">You don't have registred contacts. </p>
-<% } else { %>
-  <% if (messages.success) { %>
-    <div class="alert alert-success alert-dismissible fade show" role="alert"><%= messages.success %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-     </div>
-   <% } %>
-  <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First name</th>
-          <th scope="col">Last name</th>
-          <th scope="col">Phone number</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <% for(var i = 0; i < data.length; i++){ %>
-        <tbody>
-         <tr>
-             <th scope="row"> <%= i+1 %></th>
-             <td><%= data[i].first_name %></td>
-             <td><%= data[i].second_name %></td>
-             <td><%= data[i].phone_number %></td>
-             <td><a href="update-contact/<%= data[i].id_contact %>"><button class = "btn btn-info" >Edit</button></a>
-             <button class = "btn btn-danger" id= "delete-btn" data-toggle="modal" data-target="#removeContact" data-id="<%= data[i].id_contact %>">Delete</button></td>
-           </tr>
-         </tbody>
-       <% } %>
-    <% } %>
-    </table>
-    <div class="modal fade" id="removeContact" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="alert">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body text-center">
-            <p class="lead">Are you sure you want to delete this contact?</p>
-          </div>
-          <div class="modal-footer">
-            <a href="" id="remove-button" class="btn btn-danger">Delete Contact</a>
-          </div>
+            <button type="submit" class="btn btn-info btn-sm btn-block">Search</button>
+        </form>
         </div>
       </div>
-    </div>
-<a href="/authentification/logout"><button class= 'btn btn-secondary logoutBtn' name="logoutBtn">Logout</button></a> 
+    <div class= "col-md-8 border border-primary">
+      <div class ="pt-4">
+          <a href="/my-profile/create-contact"><button class= 'btn btn-success addBtn btn-block' name="addBtn">Add a new contact</button></a> 
+          <% if (data.length == 0){ %>
+            <p class = "lead text-center">You don't have registred contacts. </p>
+          <% } else { %>
+            <% if (messages.success) { %>
+              <div class="alert alert-success alert-dismissible fade show" role="alert"><%= messages.success %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+               </div>
+             <% } %>
+             <% } %>
+             <% if (data.length != 0){ %>
+          <input class="form-control" id="myInput" type="text" placeholder="You looking for someone on this page?">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Phone number</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <% } %>
+                <% for(var i = 0; i < data.length; i++){ %>
+                  <tbody id="myTable">
+                   <tr>
+                       <td><%= data[i].first_name %></td>
+                       <td><%= data[i].second_name %></td>
+                       <td><%= data[i].phone_number %></td>
+                       <td><a href="/my-profile/update-contact/<%= data[i].id_contact %>"><button class = "btn btn-info" >Edit</button></a>
+                       <button class = "btn btn-danger" id= "delete-btn" data-toggle="modal" data-target="#removeContact" data-id="<%= data[i].id_contact %>">Delete</button></td>
+                     </tr>
+                   </tbody>
+                 <% } %>
+              
+              </table>
+              <div class="modal fade" id="removeContact" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="alert">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-center">
+                      <p class="lead">Are you sure you want to delete this contact?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="" id="remove-button" class="btn btn-danger">Delete Contact</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pages text-center">
+                <% if (typeof noPages != 'undefined'){ %> 
+                <% for(var i = 1; i <= noPages; i++ ) { %>
+                    <a href="/my-profile/home/<%= i %>"><%= i %></a> 
+                <% } %>
+                <% } %>
+              </div>
 
 <% include ../layouts/_footer.ejs  %>

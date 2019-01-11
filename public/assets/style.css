@@ -9,9 +9,31 @@
 }
 
 .logoutBtn {
-    float: right;
+    border: 1.3px solid black;
+    position: relative;
 }
 
 #confirm-delete {
     text-decoration: none;
 }
+ .search-table {
+    margin-top: 10%;
+    padding: 5%;
+
+ }
+ 
+ body {
+     background-color: azure;
+ }
+ 
+ #myInput {
+     margin: 0.7%;
+ }
+
+ .filters {
+     padding: 2%;
+ }
+
+ #user-panel {
+     margin:auto auto;
+ }
