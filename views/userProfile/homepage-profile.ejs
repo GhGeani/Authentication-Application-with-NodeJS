@@ -22,6 +22,7 @@
     <div class= "col-md-8 border border-primary">
       <div class ="pt-4">
           <a href="/my-profile/create-contact"><button class= 'btn btn-success addBtn btn-block' name="addBtn">Add a new contact</button></a> 
+          <% if (typeof data != 'undefined'){ %>
           <% if (data.length == 0){ %>
             <p class = "lead text-center">You don't have registred contacts. </p>
           <% } else { %>
@@ -56,7 +57,9 @@
                      </tr>
                    </tbody>
                  <% } %>
-              
+                 <% } else { %>
+                  <p class = "lead text-center">You don't have registred contacts. </p>
+                  <% } %>
               </table>
               <div class="modal fade" id="removeContact" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="alert">

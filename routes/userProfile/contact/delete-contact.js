@@ -8,10 +8,13 @@ router.route('/delete-contact/:id')
                 // Flash err conn
             } else {
                 conn.query('delete user_contact, contact from user_contact join contact on user_contact.id_contact = contact.id where user_contact.id_user= ? and user_contact.id_contact = ?', [req.session.user_id, id], function (err, result) { 
-                    if (err) throw err;
-                    req.flash('success', 'The contact was successifully deleted')
-                    console.log(`Contact with id = ${id} deleted.`)
-                    res.redirect('/');
+                    if (err){
+                        console.log(err);
+                    } else {
+                        req.flash('success', 'The contact was successifully deleted')
+                        console.log(`Contact with id = ${id} deleted.`)
+                        res.redirect('/');
+                    }
                  });
             }
         });

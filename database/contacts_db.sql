@@ -106,8 +106,8 @@ ALTER TABLE `user`
 -- Constraints for table `user_contact`
 --
 ALTER TABLE `user_contact`
-  ADD CONSTRAINT `user_contact_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `user_contact_ibfk_2` FOREIGN KEY (`id_contact`) REFERENCES `contact` (`id`);
+  ADD CONSTRAINT `user_contact_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_contact_ibfk_2` FOREIGN KEY (`id_contact`) REFERENCES `contact` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
