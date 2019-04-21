@@ -37,12 +37,11 @@ To install all dependencies just *clone* this repository and *npm install*
 ---
 
 #### Screenshots
-![alt text](https://media.giphy.com/media/iIwT221cYJnQtVfTa5/giphy.gif)
+![alt text](https://media.giphy.com/media/dtIWBV1j9P2iXKN57M/giphy.gif)
 
-![alt text](https://media.giphy.com/media/WOTfK36dRhlYbOqBM4/giphy.gif)
+![alt text](https://media.giphy.com/media/mCgeSJ1SJeGlDp6M5g/giphy.gif)
 
-![alt text](https://media.giphy.com/media/YOdsdbLI2ueydRJoT6/giphy.gif)
+![alt text](https://media.giphy.com/media/iKAaYSzuvf9XK17HXY/giphy.gif)
 
-![alt text](https://media.giphy.com/media/hVxezKFUA2QPuNq6xm/giphy.gif)
 
 
